@@ -31,13 +31,15 @@ class C:
                         # Another
                     ):
                         print(i)
-        xxxxxxxxxxxxxxxx = Yyyy2YyyyyYyyyyy(
-            push_manager=context.request.resource_manager,
-            max_items_to_push=num_items,
-            batch_size=Yyyy2YyyyYyyyyYyyy.FULL_SIZE,
-        ).push(
-            # Only send the first n items.
-            items=items[:num_items]
+        xxxxxxxxxxxxxxxx = (
+            Yyyy2YyyyyYyyyyy(
+                push_manager=context.request.resource_manager,
+                max_items_to_push=num_items,
+                batch_size=Yyyy2YyyyYyyyyYyyy.FULL_SIZE,
+            ).push(
+                # Only send the first n items.
+                items=items[:num_items]
+            )
         )
         return (
             "Utterly failed doctest test for %s\n"
@@ -97,19 +99,24 @@ class C:
         }
 
     def tricky_asserts(self) -> None:
-        assert {
-            key1: value1,
-            key2: value2,
-            key3: value3,
-            key4: value4,
-            key5: value5,
-            key6: value6,
-            key7: value7,
-            key8: value8,
-            key9: value9,
-        } == expected(
-            value, is_going_to_be="too long to fit in a single line", srsly=True
-        ), "Not what we expected"
+        assert (
+            {
+                key1: value1,
+                key2: value2,
+                key3: value3,
+                key4: value4,
+                key5: value5,
+                key6: value6,
+                key7: value7,
+                key8: value8,
+                key9: value9,
+            }
+            == expected(
+                value, is_going_to_be="too long to fit in a single line", srsly=True
+            )
+        ), (
+            "Not what we expected"
+        )
 
         assert {
             key1: value1,
@@ -125,19 +132,24 @@ class C:
             "Not what we expected and the message is too long to fit in one line"
         )
 
-        assert expected(
-            value, is_going_to_be="too long to fit in a single line", srsly=True
-        ) == {
-            key1: value1,
-            key2: value2,
-            key3: value3,
-            key4: value4,
-            key5: value5,
-            key6: value6,
-            key7: value7,
-            key8: value8,
-            key9: value9,
-        }, "Not what we expected"
+        assert (
+            expected(
+                value, is_going_to_be="too long to fit in a single line", srsly=True
+            )
+            == {
+                key1: value1,
+                key2: value2,
+                key3: value3,
+                key4: value4,
+                key5: value5,
+                key6: value6,
+                key7: value7,
+                key8: value8,
+                key9: value9,
+            }
+        ), (
+            "Not what we expected"
+        )
 
         assert expected == {
             key1: value1,
@@ -154,7 +166,8 @@ class C:
             "in one line because it's too long"
         )
 
-        dis_c_instance_method = """\
+        dis_c_instance_method = (
+            """\
         %3d           0 LOAD_FAST                1 (x)
                       2 LOAD_CONST               1 (1)
                       4 COMPARE_OP               2 (==)
@@ -162,18 +175,21 @@ class C:
                       8 STORE_ATTR               0 (x)
                      10 LOAD_CONST               0 (None)
                      12 RETURN_VALUE
-        """ % (
-            _C.__init__.__code__.co_firstlineno + 1,
+        """
+            % (_C.__init__.__code__.co_firstlineno + 1,)
         )
 
-        assert expectedexpectedexpectedexpectedexpectedexpectedexpectedexpectedexpect == {
-            key1: value1,
-            key2: value2,
-            key3: value3,
-            key4: value4,
-            key5: value5,
-            key6: value6,
-            key7: value7,
-            key8: value8,
-            key9: value9,
-        }
+        assert (
+            expectedexpectedexpectedexpectedexpectedexpectedexpectedexpectedexpect
+            == {
+                key1: value1,
+                key2: value2,
+                key3: value3,
+                key4: value4,
+                key5: value5,
+                key6: value6,
+                key7: value7,
+                key8: value8,
+                key9: value9,
+            }
+        )

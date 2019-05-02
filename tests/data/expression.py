@@ -285,10 +285,11 @@ lambda a, b, c=True: a
 lambda a, b, c=True, *, d=(1 << v2), e="str": a
 lambda a, b, c=True, *vararg, d=(v1 << 2), e="str", **kwargs: a + b
 manylambdas = lambda x=lambda y=lambda z=1: z: y(): x()
-foo = lambda port_id, ignore_missing: {
-    "port1": port1_resource,
-    "port2": port2_resource,
-}[port_id]
+foo = (
+    lambda port_id, ignore_missing: {"port1": port1_resource, "port2": port2_resource}[
+        port_id
+    ]
+)
 1 if True else 2
 str or None if True else str or bytes or None
 (str or None) if True else (str or bytes or None)
@@ -491,7 +492,7 @@ for (
     addr_proto,
     addr_canonname,
     addr_sockaddr,
-) in socket.getaddrinfo("google.com", "http"):
+) in (socket.getaddrinfo("google.com", "http")):
     pass
 a = (
     aaaa.bbbb.cccc.dddd.eeee.ffff.gggg.hhhh.iiii.jjjj.kkkk.llll.mmmm.nnnn.oooo.pppp
