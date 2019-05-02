@@ -1363,6 +1363,8 @@ class Line:
         first = next(leaves)
         res = f"{first.prefix}{indent}{first.value}"
         for leaf in leaves:
+            if leaf.type == token.LPAR and not leaf.value and leaf.parent:
+                maybe_make_parens_invisible_in_atom(leaf.parent)
             res += str(leaf)
         for comment in itertools.chain.from_iterable(self.comments.values()):
             res += str(comment)
@@ -3124,9 +3126,12 @@ def generate_trailers_to_omit(line: Line, line_length: int) -> Iterator[Set[Leaf
                 inner_brackets.clear()
                 yield omit
 
-            if leaf.value:
-                opening_bracket = leaf.opening_bracket
-                closing_bracket = leaf
+            opening_bracket = leaf.opening_bracket
+            closing_bracket = leaf
+            if not opening_bracket.value:
+                ensure_visible(opening_bracket)
+            if not closing_bracket.value:
+                ensure_visible(closing_bracket)
 
 
 def get_future_imports(node: Node) -> Set[str]:
